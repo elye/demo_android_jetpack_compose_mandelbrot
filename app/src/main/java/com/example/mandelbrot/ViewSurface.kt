@@ -12,6 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlin.system.measureTimeMillis
 
 class ViewSurface @JvmOverloads constructor(
     context: Context,
@@ -40,15 +41,16 @@ class ViewSurface @JvmOverloads constructor(
     override fun surfaceCreated(holder: SurfaceHolder) {
         job = CoroutineScope(Dispatchers.Default).launch {
             synchronized(holder) {
-                val startTime = System.nanoTime()
-                val canvas = holder.lockCanvas()
-                canvas?.let {
-                    it.drawColor(Color.WHITE)
-                    drawMandelbrot.draw(NativeMandelbrotCanvas(it))
-                    holder.unlockCanvasAndPost(it)
+                val elapsedTime= measureTimeMillis {
+                    val canvas = holder.lockCanvas()
+                    canvas?.let {
+                        it.drawColor(Color.WHITE)
+                        drawMandelbrot.draw(NativeMandelbrotCanvas(it))
+                        holder.unlockCanvasAndPost(it)
+                    }
                 }
                 Log.d("Measure",
-                    "ViewSurface took : ${((System.nanoTime()-startTime)/1000000)}mS")
+                    "ViewSurface took : ${elapsedTime}mS")
 
             }
         }

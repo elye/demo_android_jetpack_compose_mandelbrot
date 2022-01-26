@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import com.example.mandelbrot.drawing.ComposeMandelbrotCanvas
+import kotlin.system.measureTimeMillis
 
 
 class JetpackComposeCanvasActivity: BaseActivity() {
@@ -23,10 +24,10 @@ class JetpackComposeCanvasActivity: BaseActivity() {
     @Composable
     fun DrawMandelbrot() {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val startTime = System.nanoTime()
-            drawMandelbrotObj.draw(ComposeMandelbrotCanvas(this))
-            Log.d("Measure",
-                "JCCanvas took : ${((System.nanoTime()-startTime)/1000000)}mS")
+            val elapsedTime= measureTimeMillis {
+                drawMandelbrotObj.draw(ComposeMandelbrotCanvas(this))
+            }
+            Log.d("Measure", "JCCanvas took : ${elapsedTime}mS")
         }
     }
 }

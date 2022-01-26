@@ -10,6 +10,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import com.example.mandelbrot.drawing.NativeMandelbrotCanvas
+import kotlin.system.measureTimeMillis
 
 
 class JetpackComposeBitmapActivity : BaseActivity() {
@@ -26,17 +27,17 @@ class JetpackComposeBitmapActivity : BaseActivity() {
     fun DrawMandelbrotCanvas() {
 
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val startTime = System.nanoTime()
-            val imageBitmap = Bitmap.createBitmap(
-                size.width.toInt(),
-                size.height.toInt(),
-                Bitmap.Config.ARGB_8888
-            )
-            val canvasBitmap = Canvas(imageBitmap)
-            drawMandelbrot.draw(NativeMandelbrotCanvas(canvasBitmap))
-            drawImage(imageBitmap.asImageBitmap())
-            Log.d("Measure",
-                "JCBitmap took : ${((System.nanoTime()-startTime)/1000000)}mS")
+            val elapsedTime= measureTimeMillis {
+                val imageBitmap = Bitmap.createBitmap(
+                    size.width.toInt(),
+                    size.height.toInt(),
+                    Bitmap.Config.ARGB_8888
+                )
+                val canvasBitmap = Canvas(imageBitmap)
+                drawMandelbrot.draw(NativeMandelbrotCanvas(canvasBitmap))
+                drawImage(imageBitmap.asImageBitmap())
+            }
+            Log.d("Measure", "JCBitmap took : ${elapsedTime}mS")
         }
     }
 }
