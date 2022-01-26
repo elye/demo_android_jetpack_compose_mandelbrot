@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
+import com.example.mandelbrot.drawing.MandelbrotCanvasCustom
 import com.example.mandelbrot.drawing.NativeMandelbrotCanvas
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
