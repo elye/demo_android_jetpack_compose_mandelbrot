@@ -4,7 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 
-class NativeMandelbrotCanvas(private val canvas: Canvas): MandelbrotCanvasCustom.MandelbrotCanvas {
+class NativeMandelbrotCanvas(private val canvas: Canvas): MandelbrotCanvas {
     override val height: Float
         get() = canvas.height.toFloat()
     override val width: Float

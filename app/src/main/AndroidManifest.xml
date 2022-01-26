@@ -23,6 +23,9 @@
         <activity android:name=".SurfaceActivity" />
         <activity android:name=".JetpackComposeCanvasActivity" />
         <activity android:name=".JetpackComposeBitmapActivity" />
+        <activity android:name=".SurfaceChannelActivity" />
+        <activity android:name=".JetpackComposeCanvasChannelActivity" />
+        <activity android:name=".JetpackComposeBitmapChannelActivity" />
     </application>
 
 </manifest>

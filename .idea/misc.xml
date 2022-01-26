@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/surfacelayout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/surfacelayoutchannel.xml" value="0.1" />
       </map>
     </option>
   </component>
