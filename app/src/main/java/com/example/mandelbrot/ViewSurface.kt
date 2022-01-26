@@ -3,6 +3,7 @@ package com.example.mandelbrot
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
@@ -39,12 +40,16 @@ class ViewSurface @JvmOverloads constructor(
     override fun surfaceCreated(holder: SurfaceHolder) {
         job = CoroutineScope(Dispatchers.Default).launch {
             synchronized(holder) {
+                val startTime = System.nanoTime()
                 val canvas = holder.lockCanvas()
                 canvas?.let {
                     it.drawColor(Color.WHITE)
                     drawMandelbrot.draw(NativeMandelbrotCanvas(it))
                     holder.unlockCanvasAndPost(it)
                 }
+                Log.d("Measure",
+                    "ViewSurface took : ${((System.nanoTime()-startTime)/1000000)}mS")
+
             }
         }
     }
