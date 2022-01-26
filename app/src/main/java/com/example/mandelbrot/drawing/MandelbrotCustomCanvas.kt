@@ -1,10 +1,4 @@
-package com.example.mandelbrot
-
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PointMode
-import androidx.compose.ui.graphics.drawscope.DrawScope
-
+package com.example.mandelbrot.drawing
 
 class MandelbrotCanvasCustom {
 

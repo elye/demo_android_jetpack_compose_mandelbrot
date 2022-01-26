@@ -3,7 +3,6 @@ package com.example.mandelbrot.drawing
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.mandelbrot.MandelbrotCanvasCustom
 
 class NativeMandelbrotCanvas(private val canvas: Canvas): MandelbrotCanvasCustom.MandelbrotCanvas {
     override val height: Float

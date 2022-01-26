@@ -4,7 +4,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.example.mandelbrot.MandelbrotCanvasCustom
 
 class ComposeMandelbrotCanvas(private val canvas: DrawScope):
     MandelbrotCanvasCustom.MandelbrotCanvas {
