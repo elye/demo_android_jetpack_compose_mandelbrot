@@ -1,8 +1,9 @@
 package com.example.mandelbrot
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PointMode
+import androidx.compose.ui.graphics.drawscope.DrawScope
 
 
 class MandelbrotCanvasCustom {
@@ -33,31 +34,18 @@ class MandelbrotCanvasCustom {
             iter--
         }
 
-        canvas.drawPoint(x.toFloat(), y.toFloat(), (iter or (iter shl 7)).toFloat()
-                / ((MAX_ITER or MAX_ITER shl 7)).toFloat())
+        canvas.drawPoint(x.toFloat(), y.toFloat(),
+            (x.toFloat()/canvas.width * 0xFF).toInt(),
+            (y.toFloat()/canvas.height * 0xFF).toInt(),
+            ((iter or (iter shl 7)).toFloat()
+                / ((MAX_ITER or MAX_ITER shl 7)).toFloat() * 0xFF).toInt())
     }
 
     interface MandelbrotCanvas {
         val height: Float
         val width: Float
-        fun drawPoint(x: Float, y: Float, iter: Float)
-    }
-}
-
-class NativeMandelbrotCanvas(private val canvas: Canvas): MandelbrotCanvasCustom.MandelbrotCanvas {
-    override val height: Float
-        get() = canvas.height.toFloat()
-    override val width: Float
-        get() = canvas.width.toFloat()
-
-    override fun drawPoint(x: Float, y: Float, iter: Float) {
-        canvas.drawPoint(x, y,
-            Paint().apply {
-                color = Color.rgb(
-                    ((x / canvas.width) * 0xFF).toInt(),
-                    ((y / canvas.height) * 0xFF).toInt(),
-                    (iter * 0xff).toInt()
-                )
-            })
+        fun drawPoint(
+            x: Float, y: Float,
+            r: Int, g: Int, b: Int)
     }
 }

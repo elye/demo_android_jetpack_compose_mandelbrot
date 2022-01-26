@@ -2,16 +2,15 @@ package com.example.mandelbrot
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
+import com.example.mandelbrot.drawing.NativeMandelbrotCanvas
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
 
 class ViewSurface @JvmOverloads constructor(
     context: Context,
@@ -43,9 +42,7 @@ class ViewSurface @JvmOverloads constructor(
                 val canvas = holder.lockCanvas()
                 canvas?.let {
                     it.drawColor(Color.WHITE)
-                    val elapsedTime = measureTimeMillis {
-                        drawMandelbrot.draw(NativeMandelbrotCanvas(it))
-                    }
+                    drawMandelbrot.draw(NativeMandelbrotCanvas(it))
                     holder.unlockCanvasAndPost(it)
                 }
             }
