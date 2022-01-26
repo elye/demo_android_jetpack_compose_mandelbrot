@@ -28,7 +28,7 @@ class JetpackComposeBitmapActivity : BaseActivity() {
                 Bitmap.Config.ARGB_8888
             )
             val canvasBitmap = Canvas(imageBitmap)
-            drawMandelbrot.draw(canvasBitmap)
+            drawMandelbrot.draw(NativeMandelbrotCanvas(canvasBitmap))
             drawImage(imageBitmap.asImageBitmap())
         }
     }

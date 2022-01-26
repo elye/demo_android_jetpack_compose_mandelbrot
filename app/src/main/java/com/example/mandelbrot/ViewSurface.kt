@@ -2,6 +2,7 @@ package com.example.mandelbrot
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -15,8 +16,8 @@ import kotlin.system.measureTimeMillis
 class ViewSurface @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0)
-    : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
+    defStyleAttr: Int = 0
+) : SurfaceView(context, attrs, defStyleAttr), SurfaceHolder.Callback {
 
     private var job: Job? = null
     private val drawMandelbrot by lazy {
@@ -42,8 +43,8 @@ class ViewSurface @JvmOverloads constructor(
                 val canvas = holder.lockCanvas()
                 canvas?.let {
                     it.drawColor(Color.WHITE)
-                    val elapsedTime= measureTimeMillis {
-                        drawMandelbrot.draw(it)
+                    val elapsedTime = measureTimeMillis {
+                        drawMandelbrot.draw(NativeMandelbrotCanvas(it))
                     }
                     holder.unlockCanvasAndPost(it)
                 }
@@ -59,6 +60,7 @@ class ViewSurface @JvmOverloads constructor(
 
         setMeasuredDimension(
             View.resolveSize(desiredWidth, widthMeasureSpec),
-            View.resolveSize(desiredHeight, heightMeasureSpec))
+            View.resolveSize(desiredHeight, heightMeasureSpec)
+        )
     }
 }
