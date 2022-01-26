@@ -31,6 +31,7 @@ class LauncherActivity: BaseActivity() {
             item { context.StartActivityButton(SurfaceChannelActivity::class.java) }
             item { context.StartActivityButton(JetpackComposeBitmapChannelActivity::class.java) }
             item { context.StartActivityButton(JetpackComposeCanvasChannelActivity::class.java) }
+            item { context.StartActivityButton(JetpackComposeBitmapChannelIncrementalActivity::class.java) }
         }
     }
 
