@@ -5,8 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.mandelbrot.drawing.ComposeMandelbrotCanvas
-import com.example.mandelbrot.drawing.MandelbrotCanvasCustom
+import com.example.mandelbrot.canvas.ComposeMandelbrotCanvas
 import com.example.mandelbrot.drawing.MandelbrotCanvasCustomChannel
 import kotlin.system.measureTimeMillis
 

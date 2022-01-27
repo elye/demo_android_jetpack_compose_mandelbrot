@@ -1,11 +1,11 @@
-package com.example.mandelbrot.drawing
+package com.example.mandelbrot.canvas
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
 
-class ComposeMandelbrotCanvas(private val canvas: DrawScope): MandelbrotCanvas {
+class ComposeMandelbrotCanvas(private val canvas: DrawScope): BaseMandelbrotCanvas {
     override val height: Float
         get() = canvas.size.height
     override val width: Float

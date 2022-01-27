@@ -9,13 +9,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
-import com.example.mandelbrot.drawing.MandelbrotCustomCanvasChannelIncremental
-import com.example.mandelbrot.drawing.NativeMandelbrotCanvas
+import com.example.mandelbrot.drawing.MandelbrotCanvasCustomChannelIncremental
+import com.example.mandelbrot.canvas.NativeMandelbrotCanvas
 import kotlin.system.measureTimeMillis
 
 class JetpackComposeBitmapChannelIncrementalActivity : BaseActivity() {
     private val drawMandelbrot by lazy {
-        MandelbrotCustomCanvasChannelIncremental()
+        MandelbrotCanvasCustomChannelIncremental()
     }
 
     @Composable

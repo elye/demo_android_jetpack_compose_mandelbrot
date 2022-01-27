@@ -1,10 +1,10 @@
-package com.example.mandelbrot.drawing
+package com.example.mandelbrot.canvas
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 
-class NativeMandelbrotCanvas(private val canvas: Canvas): MandelbrotCanvas {
+class NativeMandelbrotCanvas(private val canvas: Canvas): BaseMandelbrotCanvas {
     override val height: Float
         get() = canvas.height.toFloat()
     override val width: Float

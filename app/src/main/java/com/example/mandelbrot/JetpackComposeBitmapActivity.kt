@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import com.example.mandelbrot.drawing.MandelbrotCanvasCustom
-import com.example.mandelbrot.drawing.NativeMandelbrotCanvas
+import com.example.mandelbrot.canvas.NativeMandelbrotCanvas
 import kotlin.system.measureTimeMillis
 
 
