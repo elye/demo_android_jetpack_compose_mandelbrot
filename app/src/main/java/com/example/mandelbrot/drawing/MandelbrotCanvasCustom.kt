@@ -5,8 +5,8 @@ import com.example.mandelbrot.canvas.BaseMandelbrotCanvas
 open class MandelbrotCanvasCustom {
 
     companion object {
-        private const val MAX_ITER = 300
-        private const val ZOOM = 300
+        private const val MAX_ITER = 1000
+        private const val ZOOM = 1000
     }
 
     data class MandelbrotPoint(

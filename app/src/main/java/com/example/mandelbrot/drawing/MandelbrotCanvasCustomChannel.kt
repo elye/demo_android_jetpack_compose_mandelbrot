@@ -2,23 +2,23 @@ package com.example.mandelbrot.drawing
 
 import android.util.Log
 import com.example.mandelbrot.canvas.BaseMandelbrotCanvas
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.produce
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
 
-open class MandelbrotCanvasCustomChannel: MandelbrotCanvasCustom() {
+open class MandelbrotCanvasCustomChannel : MandelbrotCanvasCustom() {
 
-    open val CORE = 5
+    open val CORE = 4
 
     private fun parallel(canvas: BaseMandelbrotCanvas, update: () -> Unit = {}) = runBlocking {
         fanoutFanin(canvas, update)
     }
 
-    protected suspend fun CoroutineScope.fanoutFanin(canvas: BaseMandelbrotCanvas, update: () -> Unit = {}) {
+    protected suspend fun CoroutineScope.fanoutFanin(
+        canvas: BaseMandelbrotCanvas,
+        update: () -> Unit = {}
+    ) {
         val consumer = Channel<List<MandelbrotPoint>>()
 
         repeat(CORE) {
@@ -38,12 +38,15 @@ open class MandelbrotCanvasCustomChannel: MandelbrotCanvasCustom() {
         end: Int
     ) = produce<Double>(Dispatchers.Default) {
         val mandelbrotPoints = mutableListOf<MandelbrotPoint>()
-        for (y in start until end) {
-            for (x in 0 until canvas.width.toInt()) {
-                val iter = calculateIter(x, canvas, y)
-                mandelbrotPoints.add(createMandelbrotPoint(x, y, canvas, iter))
+        val elapsedTime = measureTimeMillis {
+            for (y in start until end) {
+                for (x in 0 until canvas.width.toInt()) {
+                    val iter = calculateIter(x, canvas, y)
+                    mandelbrotPoints.add(createMandelbrotPoint(x, y, canvas, iter))
+                }
             }
         }
+        Log.d("Measure", "CoreProducer took : ${elapsedTime}mS ${Thread.currentThread()}")
         consumer.send(mandelbrotPoints)
     }
 
@@ -51,19 +54,18 @@ open class MandelbrotCanvasCustomChannel: MandelbrotCanvasCustom() {
         consumer: Channel<List<MandelbrotPoint>>,
         canvas: BaseMandelbrotCanvas,
         update: () -> Unit = {}
-    ) =
-        launch {
-            repeat(CORE) {
-                val elapsedTime = measureTimeMillis {
-                    consumer.receive().forEach {
-                        canvas.drawPoint(it.x, it.y, it.r, it.g, it.b)
-                    }
+    ) = launch {
+        repeat(CORE) {
+            val elapsedTime = measureTimeMillis {
+                consumer.receive().forEach {
+                    canvas.drawPoint(it.x, it.y, it.r, it.g, it.b)
                 }
-                Log.d("Measure", "CoreConsumer took : ${elapsedTime}mS")
-                update()
             }
-            consumer.close()
+            Log.d("Measure", "CoreConsumer took : ${elapsedTime}mS")
+            update()
         }
+        consumer.close()
+    }
 
     override fun draw(canvas: BaseMandelbrotCanvas, update: () -> Unit) {
         parallel(canvas, update)
