@@ -8,10 +8,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import com.example.mandelbrot.canvas.BitmapCanvasMandelbrotCanvas
+import com.example.mandelbrot.canvas.BitmapMandelbrotCanvas
 import com.example.mandelbrot.drawing.MandelbrotCanvasCustomChannelIncremental
 import kotlin.system.measureTimeMillis
 
-class JetpackComposeBitmapCanvasChannelIncrementalActivity : BaseActivity() {
+class JetpackComposeBitmapChannelIncrementalActivity : BaseActivity() {
     private val drawMandelbrot by lazy {
         MandelbrotCanvasCustomChannelIncremental()
     }
@@ -39,7 +40,7 @@ class JetpackComposeBitmapCanvasChannelIncrementalActivity : BaseActivity() {
         }
 
         LaunchedEffect(key1 = Unit) {
-            val canvas = BitmapCanvasMandelbrotCanvas(width, height)
+            val canvas = BitmapMandelbrotCanvas(width, height)
             drawMandelbrot.draw(canvas) {
                 imageBitmap = canvas.bitmap.asImageBitmap()
             }

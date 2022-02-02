@@ -32,7 +32,7 @@ class JetpackComposeBitmapCanvasActivity : BaseActivity() {
                 drawMandelbrot.draw(canvas)
                 drawImage(canvas.bitmap.asImageBitmap())
             }
-            Log.d("Measure", "JCBitmap took : ${elapsedTime}mS")
+            Log.d("Measure", "JCBitmapCanvas took : ${elapsedTime}mS")
         }
     }
 }
