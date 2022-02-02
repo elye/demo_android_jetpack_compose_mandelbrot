@@ -22,11 +22,11 @@
         </activity>
         <activity android:name=".SurfaceActivity" />
         <activity android:name=".JetpackComposeCanvasActivity" />
-        <activity android:name=".JetpackComposeBitmapActivity" />
+        <activity android:name=".JetpackComposeBitmapCanvasActivity" />
         <activity android:name=".SurfaceChannelActivity" />
         <activity android:name=".JetpackComposeCanvasChannelActivity" />
-        <activity android:name=".JetpackComposeBitmapChannelActivity" />
-        <activity android:name=".JetpackComposeBitmapChannelIncrementalActivity" />
+        <activity android:name=".JetpackComposeBitmapCanvasChannelActivity" />
+        <activity android:name=".JetpackComposeBitmapCanvasChannelIncrementalActivity" />
     </application>
 
 </manifest>

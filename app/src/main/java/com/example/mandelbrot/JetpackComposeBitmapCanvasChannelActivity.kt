@@ -1,7 +1,5 @@
 package com.example.mandelbrot
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,11 +8,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import com.example.mandelbrot.canvas.BitmapCanvasMandelbrotCanvas
 import com.example.mandelbrot.drawing.MandelbrotCanvasCustomChannel
-import com.example.mandelbrot.canvas.NativeMandelbrotCanvas
 import kotlin.system.measureTimeMillis
 
 
-class JetpackComposeBitmapChannelActivity : BaseActivity() {
+class JetpackComposeBitmapCanvasChannelActivity : BaseActivity() {
     private val drawMandelbrot by lazy {
         MandelbrotCanvasCustomChannel()
     }

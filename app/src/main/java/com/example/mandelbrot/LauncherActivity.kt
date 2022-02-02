@@ -26,12 +26,12 @@ class LauncherActivity: BaseActivity() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item { context.StartActivityButton(SurfaceActivity::class.java) }
-            item { context.StartActivityButton(JetpackComposeBitmapActivity::class.java) }
+            item { context.StartActivityButton(JetpackComposeBitmapCanvasActivity::class.java) }
             item { context.StartActivityButton(JetpackComposeCanvasActivity::class.java) }
             item { context.StartActivityButton(SurfaceChannelActivity::class.java) }
-            item { context.StartActivityButton(JetpackComposeBitmapChannelActivity::class.java) }
+            item { context.StartActivityButton(JetpackComposeBitmapCanvasChannelActivity::class.java) }
             item { context.StartActivityButton(JetpackComposeCanvasChannelActivity::class.java) }
-            item { context.StartActivityButton(JetpackComposeBitmapChannelIncrementalActivity::class.java) }
+            item { context.StartActivityButton(JetpackComposeBitmapCanvasChannelIncrementalActivity::class.java) }
         }
     }
 
