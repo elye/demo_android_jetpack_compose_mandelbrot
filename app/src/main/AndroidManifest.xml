@@ -27,7 +27,6 @@
         <activity android:name=".SurfaceChannelActivity" />
         <activity android:name=".JetpackComposeCanvasChannelActivity" />
         <activity android:name=".JetpackComposeBitmapCanvasChannelActivity" />
-        <activity android:name=".JetpackComposeBitmapCanvasChannelIncrementalActivity" />
         <activity android:name=".JetpackComposeBitmapChannelActivity" />
         <activity android:name=".JetpackComposeBitmapChannelIncrementalActivity" />
     </application>
